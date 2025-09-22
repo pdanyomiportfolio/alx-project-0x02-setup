@@ -1,26 +1,27 @@
 import React from "react";
 import Card from "@/components/common/Card";
+import { type CardProps } from "@/interfaces";
 
-export default function HomePage() {
+const Home: React.FC = () => {
+  const cards: CardProps[] = [
+    { title: "First Card", content: "This is the content of the first card." },
+    {
+      title: "Second Card",
+      content: "Here is the content of the second card.",
+    },
+    {
+      title: "Third Card",
+      content: "And this is the content of the third card.",
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
-      <h1 className="mb-6 text-3xl font-bold text-center">
-        Our Featured Cards
-      </h1>
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <Card
-          title="Card One"
-          content="This is the first reusable card component."
-        />
-        <Card
-          title="Card Two"
-          content="Each card can have unique content passed as props."
-        />
-        <Card
-          title="Card Three"
-          content="You can use this Card component anywhere in the project."
-        />
-      </div>
+    <div className="p-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {cards.map((card, index) => (
+        <Card key={index} title={card.title} content={card.content} />
+      ))}
     </div>
   );
-}
+};
+
+export default Home;
